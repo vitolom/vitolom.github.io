@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ═══════════════════════════════
+     OPEN GRAPH META — WhatsApp preview
+     Questi tag vengono letti da WhatsApp
+     quando incolla il link nella chat
+═══════════════════════════════ -->
+<meta property="og:type"        content="website">
+<meta property="og:site_name"   content="Paperbanana">
+<meta property="og:url"         content="https://paperbanana.com/w/xk92m">
+<meta property="og:title"       content="🍌 Per Giulia — hai ricevuto qualcosa di speciale">
+<meta property="og:description" content="Chiara ti ha mandato un wrap · tocca per aprire · paperbanana">
+<meta property="og:image"       content="https://paperbanana.com/og/wrap-xk92m.jpg">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt"   content="Wrap Paperbanana per Giulia">
+
+<!-- Twitter/iMessage fallback -->
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="🍌 Per Giulia — hai ricevuto qualcosa di speciale">
+<meta name="twitter:description" content="Chiara ti ha mandato un wrap · tocca per aprire">
+<meta name="twitter:image"       content="https://paperbanana.com/og/wrap-xk92m.jpg">
+
+<title>Paperbanana · Per Giulia</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Nunito',sans-serif;
+  background:#F8FAFA;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  min-height:100vh;
+  padding:24px;
+  gap:24px;
+}
+
+/* ── anteprima card WhatsApp simulata ── */
+.wa-mock{
+  width:min(92vw,380px);
+  background:#E9F8E9;
+  border-radius:16px;
+  padding:16px;
+  box-shadow:0 4px 20px rgba(0,0,0,0.08);
+}
+.wa-header{
+  font-size:12px;font-weight:700;
+  color:#4A4A4A;margin-bottom:10px;
+  letter-spacing:0.05em;
+  opacity:0.6;
+}
+.wa-bubble{
+  background:white;
+  border-radius:4px 12px 12px 12px;
+  overflow:hidden;
+  box-shadow:0 1px 4px rgba(0,0,0,0.08);
+}
+.wa-msg{
+  padding:10px 12px 6px;
+  font-size:14px;color:#1A1A1A;line-height:1.5;
+}
+.wa-preview{
+  border-top:1px solid #F0F0F0;
+  overflow:hidden;
+}
+.wa-preview-img{
+  width:100%;height:180px;
+  background:linear-gradient(135deg, #E0F4F4 0%, #E8F8F5 50%, #FDF6CC 100%);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+  overflow:hidden;
+}
+.wa-preview-content{
+  padding:10px 12px;
+  background:#F8FAFA;
+}
+.wa-preview-site{
+  font-size:11px;font-weight:700;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:#50AAAA;margin-bottom:3px;
+}
+.wa-preview-title{
+  font-size:14px;font-weight:800;color:#1A1A1A;
+  line-height:1.3;margin-bottom:3px;
+}
+.wa-preview-desc{
+  font-size:12px;font-weight:500;color:#6A6A6A;
+  line-height:1.4;
+}
+.wa-time{
+  text-align:right;font-size:11px;color:#9A9A9A;
+  padding:4px 10px 8px;
+}
+
+/* ── og:image simulata ── */
+.og-image-preview{
+  width:min(92vw,600px);
+  background:white;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 4px 20px rgba(0,0,0,0.08);
+}
+.og-image-label{
+  font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;
+  color:#9A9A9A;padding:14px 18px 8px;
+}
+
+/* ── og:image 1200×630 simulata (scalata) ── */
+.og-canvas{
+  width:100%;
+  aspect-ratio:1200/630;
+  background:linear-gradient(135deg, #E0F4F4 0%, #E8F8F5 60%, #FDF6CC 100%);
+  position:relative;
+  overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+
+/* pattern decorativo sfondo */
+.og-canvas::before{
+  content:'';
+  position:absolute;inset:0;
+  background-image:
+    radial-gradient(circle at 15% 50%, rgba(80,170,170,0.12) 0%, transparent 50%),
+    radial-gradient(circle at 85% 20%, rgba(80,190,150,0.1) 0%, transparent 40%),
+    radial-gradient(circle at 70% 80%, rgba(240,200,0,0.08) 0%, transparent 35%);
+}
+
+.og-inner{
+  position:relative;z-index:2;
+  display:flex;align-items:center;
+  justify-content:space-between;
+  width:88%;gap:24px;
+}
+
+/* sinistra: logo + testo -->
+.og-left{
+  display:flex;flex-direction:column;gap:8px;
+  flex:1;
+}
+.og-logo-row{
+  display:flex;align-items:center;gap:6px;
+  margin-bottom:4px;
+}
+.og-logo-dot{
+  width:10px;height:10px;border-radius:50%;
+  background:#50AAAA;
+}
+.og-logo-txt{
+  font-size:clamp(11px,2.5vw,18px);
+  font-weight:900;color:#1A1A1A;letter-spacing:-0.02em;
+}
+.og-logo-txt span{color:#50AAAA;}
+
+.og-to{
+  font-size:clamp(8px,1.8vw,13px);
+  font-weight:700;letter-spacing:0.15em;
+  text-transform:uppercase;color:#9A9A9A;
+}
+.og-name{
+  font-family:'Nunito',sans-serif;
+  font-size:clamp(20px,5.5vw,48px);
+  font-weight:900;color:#1A1A1A;
+  line-height:1;letter-spacing:-0.02em;
+}
+.og-sub{
+  font-size:clamp(8px,1.8vw,14px);
+  font-weight:600;color:#6A6A6A;
+  line-height:1.4;
+}
+.og-cta{
+  display:inline-flex;align-items:center;gap:6px;
+  background:#50AAAA;
+  border-radius:50px;
+  padding:clamp(4px,1vw,8px) clamp(10px,2.5vw,20px);
+  margin-top:4px;
+  width:fit-content;
+}
+.og-cta-txt{
+  font-size:clamp(7px,1.6vw,13px);
+  font-weight:800;color:white;letter-spacing:0.03em;
+}
+
+/* destra: personaggio + illustrazione -->
+.og-right{
+  position:relative;
+  width:clamp(80px,22vw,200px);
+  flex-shrink:0;
+}
+.og-illus-bg{
+  width:100%;aspect-ratio:1;
+  background:white;
+  border-radius:clamp(12px,2.5vw,24px);
+  overflow:hidden;
+  box-shadow:0 4px 20px rgba(80,170,170,0.2);
+}
+.og-char-badge{
+  position:absolute;
+  bottom:-6%;right:-6%;
+  width:35%;aspect-ratio:1;
+  background:white;
+  border-radius:clamp(8px,1.8vw,16px);
+  border:clamp(2px,.4vw,4px) solid #F8FAFA;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 3px 12px rgba(80,170,170,0.2);
+  overflow:hidden;
+}
+
+/* barra in basso -->
+.og-bar{
+  position:absolute;bottom:0;left:0;right:0;
+  height:clamp(3px,.6vw,5px);
+  background:linear-gradient(90deg, #50AAAA, #50BE96, #F0C800);
+}
+
+/* note tecniche -->
+.note-box{
+  width:min(92vw,600px);
+  background:white;
+  border-radius:16px;
+  padding:20px 22px;
+  box-shadow:0 2px 12px rgba(0,0,0,0.06);
+  display:flex;flex-direction:column;gap:10px;
+}
+.note-title{
+  font-size:13px;font-weight:800;color:#1A1A1A;
+  margin-bottom:2px;
+}
+.note-row{
+  display:flex;align-items:flex-start;gap:10px;
+  font-size:12px;font-weight:600;color:#6A6A6A;line-height:1.5;
+}
+.note-key{
+  font-size:10px;font-weight:800;letter-spacing:0.1em;
+  text-transform:uppercase;color:#50AAAA;
+  white-space:nowrap;margin-top:1px;min-width:80px;
+}
+code{
+  background:#F0F6F6;color:#3C7DA0;
+  border-radius:5px;padding:1px 6px;
+  font-size:11px;font-family:monospace;
+  word-break:break-all;
+}
+</style>
+</head>
+<body>
+
+<!-- ── Preview WhatsApp simulata ── -->
+<div class="wa-mock">
+  <div class="wa-header">📱 anteprima WhatsApp</div>
+  <div class="wa-bubble">
+    <div class="wa-msg">Guarda cosa ho ricevuto 🍌<br>paperbanana.com/w/xk92m</div>
+    <div class="wa-preview">
+      <div class="wa-preview-img">
+        <!-- og:image in miniatura -->
+        <svg width="90%" viewBox="0 0 600 315" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#E0F4F4"/>
+              <stop offset="60%" stop-color="#E8F8F5"/>
+              <stop offset="100%" stop-color="#FDF6CC"/>
+            </linearGradient>
+            <linearGradient id="bar" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#50AAAA"/>
+              <stop offset="50%" stop-color="#50BE96"/>
+              <stop offset="100%" stop-color="#F0C800"/>
+            </linearGradient>
+          </defs>
+          <rect width="600" height="315" fill="url(#bg)"/>
+          <!-- decorative circles -->
+          <circle cx="80" cy="160" r="120" fill="#50AAAA" opacity=".06"/>
+          <circle cx="500" cy="60" r="90" fill="#50BE96" opacity=".07"/>
+          <circle cx="420" cy="270" r="60" fill="#F0C800" opacity=".06"/>
+          <!-- logo -->
+          <circle cx="36" cy="28" r="6" fill="#50AAAA"/>
+          <text x="48" y="34" font-family="'Nunito',sans-serif" font-weight="900" font-size="22" fill="#1A1A1A">paperbanan</text>
+          <text x="232" y="34" font-family="'Nunito',sans-serif" font-weight="900" font-size="22" fill="#50AAAA">a</text>
+          <!-- to -->
+          <text x="36" y="72" font-family="'Nunito',sans-serif" font-weight="700" font-size="12" fill="#9A9A9A" letter-spacing="2">DA CHIARA, CON AFFETTO</text>
+          <!-- name -->
+          <text x="36" y="140" font-family="'Nunito',sans-serif" font-weight="900" font-size="72" fill="#1A1A1A">Per Giulia</text>
+          <!-- sub -->
+          <text x="36" y="168" font-family="'Nunito',sans-serif" font-weight="600" font-size="16" fill="#6A6A6A">hai ricevuto qualcosa di speciale · tocca per aprire</text>
+          <!-- cta pill -->
+          <rect x="36" y="186" width="160" height="36" rx="18" fill="#50AAAA"/>
+          <text x="116" y="209" text-anchor="middle" font-family="'Nunito',sans-serif" font-weight="800" font-size="14" fill="white">Scopri il regalo →</text>
+          <!-- illustrazione box -->
+          <rect x="400" y="28" width="168" height="168" rx="20" fill="white" opacity=".8"/>
+          <rect x="400" y="28" width="168" height="168" rx="20" fill="none" stroke="#50AAAA" stroke-width="1" opacity=".3"/>
+          <!-- fiori semplici nell'illus -->
+          <path d="M440 140 Q460 110 470 80" stroke="#3C7DA0" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <circle cx="470" cy="75" r="14" fill="#A0DDCC" opacity=".9"/>
+          <circle cx="470" cy="75" r="8" fill="#50AAAA"/>
+          <circle cx="470" cy="75" r="4" fill="#3C7DA0"/>
+          <ellipse cx="490" cy="110" rx="8" ry="12" fill="#80CCBB" opacity=".7" transform="rotate(15 490 110)"/>
+          <circle cx="490" cy="105" r="5" fill="#50AAAA" opacity=".8"/>
+          <ellipse cx="455" cy="100" rx="6" ry="10" fill="#F0C800" opacity=".6" transform="rotate(-10 455 100)"/>
+          <!-- char badge sull'illus -->
+          <rect x="528" y="156" width="52" height="52" rx="12" fill="white"/>
+          <rect x="528" y="156" width="52" height="52" rx="12" fill="none" stroke="#50AAAA" stroke-width="1.5" opacity=".4"/>
+          <!-- grum mini -->
+          <ellipse cx="554" cy="190" rx="16" ry="12" fill="#3C8A8A"/>
+          <circle cx="554" cy="177" r="14" fill="#50AAAA"/>
+          <circle cx="547" cy="173" r="5" fill="white"/><circle cx="561" cy="173" r="5" fill="white"/>
+          <circle cx="548" cy="174" r="3" fill="#1A1A1A"/><circle cx="562" cy="174" r="3" fill="#1A1A1A"/>
+          <!-- barra brand -->
+          <rect x="0" y="309" width="600" height="6" fill="url(#bar)"/>
+        </svg>
+      </div>
+      <div class="wa-preview-content">
+        <div class="wa-preview-site">paperbanana.com</div>
+        <div class="wa-preview-title">🍌 Per Giulia — hai ricevuto qualcosa di speciale</div>
+        <div class="wa-preview-desc">Chiara ti ha mandato un wrap · tocca per aprire</div>
+      </div>
+    </div>
+    <div class="wa-time">14:32 ✓✓</div>
+  </div>
+</div>
+
+<!-- ── og:image vera (1200×630 scalata) ── -->
+<div class="og-image-preview">
+  <div class="og-image-label">og:image · 1200×630px (generata lato server)</div>
+  <div class="og-canvas">
+    <div class="og-inner">
+      <div class="og-left">
+        <div class="og-logo-row">
+          <div class="og-logo-dot"></div>
+          <span class="og-logo-txt">paperbanan<span>a</span></span>
+        </div>
+        <div class="og-to">da Chiara, con affetto</div>
+        <div class="og-name">Per<br>Giulia</div>
+        <div class="og-sub">hai ricevuto qualcosa<br>di speciale</div>
+        <div class="og-cta">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12H19M13 6l6 6-6 6" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="og-cta-txt">Scopri il regalo</span>
+        </div>
+      </div>
+      <div class="og-right">
+        <div class="og-illus-bg">
+          <svg viewBox="0 0 200 200" width="100%" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="200" fill="#E8F8F5"/>
+            <path d="M50 170Q75 140 90 110Q100 90 108 60" stroke="#3C7DA0" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <g transform="translate(108,55)">
+              <ellipse cx="0" cy="-9" rx="7" ry="9" fill="#A0DDCC" opacity=".9"/>
+              <ellipse cx="8" cy="-3" rx="7" ry="9" fill="#80CCBB" opacity=".8" transform="rotate(72)"/>
+              <ellipse cx="5" cy="7" rx="7" ry="9" fill="#A0DDCC" opacity=".7" transform="rotate(144)"/>
+              <ellipse cx="-5" cy="7" rx="7" ry="9" fill="#80CCBB" opacity=".8" transform="rotate(216)"/>
+              <ellipse cx="-8" cy="-3" rx="7" ry="9" fill="#A0DDCC" opacity=".7" transform="rotate(288)"/>
+              <circle cx="0" cy="0" r="5" fill="#50AAAA"/>
+              <circle cx="0" cy="0" r="2.5" fill="#3C7DA0"/>
+            </g>
+            <g transform="translate(120,85)">
+              <ellipse cx="0" cy="-6" rx="5" ry="8" fill="#A0DDCC" opacity=".8"/>
+              <ellipse cx="6" cy="-2" rx="5" ry="8" fill="#80CCBB" opacity=".7" transform="rotate(90)"/>
+              <ellipse cx="4" cy="5" rx="5" ry="8" fill="#A0DDCC" opacity=".75" transform="rotate(180)"/>
+              <ellipse cx="-4" cy="5" rx="5" ry="8" fill="#80CCBB" opacity=".7" transform="rotate(270)"/>
+              <circle cx="0" cy="0" r="4" fill="#50AAAA" opacity=".85"/>
+            </g>
+            <g transform="translate(108,30)">
+              <ellipse cx="0" cy="-5" rx="4" ry="7" fill="#F0C800" opacity=".7"/>
+              <ellipse cx="5" cy="2" rx="4" ry="7" fill="#F0C800" opacity=".6" transform="rotate(120)"/>
+              <ellipse cx="-5" cy="2" rx="4" ry="7" fill="#F0C800" opacity=".65" transform="rotate(240)"/>
+              <circle cx="0" cy="0" r="3" fill="#D4AA00" opacity=".8"/>
+            </g>
+            <ellipse cx="65" cy="148" rx="5" ry="8" fill="#50BE96" opacity=".4" transform="rotate(28 65 148)"/>
+            <ellipse cx="52" cy="138" rx="4" ry="7" fill="#50AAAA" opacity=".3" transform="rotate(-18 52 138)"/>
+          </svg>
+        </div>
+        <div class="og-char-badge">
+          <svg viewBox="0 0 110 118" width="90%">
+            <ellipse cx="55" cy="84" rx="36" ry="27" fill="#3C8A8A"/>
+            <circle cx="55" cy="48" r="32" fill="#50AAAA"/>
+            <circle cx="27" cy="20" r="13" fill="#50AAAA"/><circle cx="83" cy="20" r="13" fill="#50AAAA"/>
+            <circle cx="27" cy="20" r="8" fill="#3C8A8A"/><circle cx="83" cy="20" r="8" fill="#3C8A8A"/>
+            <ellipse cx="55" cy="57" rx="18" ry="13" fill="#80CCCC"/>
+            <ellipse cx="43" cy="43" rx="8" ry="8" fill="white"/><ellipse cx="67" cy="43" rx="8" ry="8" fill="white"/>
+            <circle cx="44" cy="44" r="5" fill="#1A1A1A"/><circle cx="68" cy="44" r="5" fill="#1A1A1A"/>
+            <path d="M35 33Q43 28 51 31" stroke="#1A4040" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M59 31Q67 28 75 33" stroke="#1A4040" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <ellipse cx="55" cy="53" rx="6" ry="4" fill="#2A6A6A"/>
+            <path d="M46 97Q55 91 65 97" stroke="#F0C800" stroke-width="2" fill="none"/>
+            <circle cx="55" cy="93" r="3.5" fill="#F0C800"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="og-bar"></div>
+  </div>
+</div>
+
+<!-- ── Note tecniche ── -->
+<div class="note-box">
+  <div class="note-title">Come farlo funzionare davvero</div>
+  <div class="note-row">
+    <span class="note-key">og:image</span>
+    <span>Genera il PNG lato server con Puppeteer o Batik a partire dall'SVG dell'illustrazione. Salva su <code>Cloudflare R2</code> al momento della creazione del wrap.</span>
+  </div>
+  <div class="note-row">
+    <span class="note-key">og:title</span>
+    <span>Dinamico per ogni wrap: <code>"🍌 Per {destinatario}"</code> — personalizzato, curioso, non rivela il contenuto.</span>
+  </div>
+  <div class="note-row">
+    <span class="note-key">Thymeleaf</span>
+    <span>I meta tag vanno nell'<code>&lt;head&gt;</code> renderizzato server-side — WhatsApp non esegue JS, legge solo l'HTML raw.</span>
+  </div>
+  <div class="note-row">
+    <span class="note-key">Test locale</span>
+    <span>Usa <code>ngrok http 8080</code> per esporre il backend locale e incolla il link su WhatsApp per vedere la preview reale.</span>
+  </div>
+  <div class="note-row">
+    <span class="note-key">Cache WhatsApp</span>
+    <span>WhatsApp fa cache delle preview per ~24h. Per forzare un aggiornamento aggiungi <code>?v=2</code> al link.</span>
+  </div>
+</div>
+
+</body>
+</html>
